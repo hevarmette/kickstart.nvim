@@ -239,3 +239,6 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 ```
 </details>
 
+#### My additional requirements
+- must have nerd font set for terminal
+- virtual env for debugpy at ~/.virtualenvs/debugpy for python debug. then put json debug files needed in project folders
