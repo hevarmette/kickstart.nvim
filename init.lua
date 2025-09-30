@@ -679,6 +679,7 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
+        jedi_ls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -717,9 +718,21 @@ require('lazy').setup({
       --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
+
+      -- `vim.tbl_keys(servers)` will generate a list of lspconfig server names.
+      -- We must then iterate through that list and replace the names with the correct Mason
+      -- package name.
       local ensure_installed = vim.tbl_keys(servers or {})
+      for i, pkg in ipairs(ensure_installed) do
+        if pkg == 'jedi_ls' then
+          -- The lspconfig name `jedi_ls` needs to be replaced with the Mason package name `jedi-language-server`.
+          ensure_installed[i] = 'jedi-language-server'
+        end
+      end
+
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'black', -- Used to format Python code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -772,6 +785,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        python = { 'black' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
