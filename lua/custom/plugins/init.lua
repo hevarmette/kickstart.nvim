@@ -9,4 +9,5 @@ return {
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.neo-tree',
+  require 'custom.plugins.iron',
 }
