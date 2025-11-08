@@ -242,3 +242,4 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 #### My additional requirements
 - must have nerd font set for terminal
 - virtual env for debugpy at ~/.virtualenvs/debugpy for python debug. then put json debug files needed in project folders
+- for jupyter notebook support, ipython needs to be installed in the project (or system wide). specified in iron plugin.
