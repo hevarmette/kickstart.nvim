@@ -737,7 +737,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'black', -- Used to format Python code
-        -- 'markdownlint', -- Used to format markdown text
+        'prettier', -- Used to format markdown text among others languages I don't use rn
+        'markdownlint-cli2', -- Used for linting markdown
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -791,6 +792,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'black' },
+        markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
