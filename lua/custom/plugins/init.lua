@@ -9,5 +9,6 @@ return {
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.neo-tree',
-  require 'custom.plugins.iron',
+  require 'custom.plugins.iron', -- run lines with a terminal on right side
+  require 'custom.plugins.dadbod', -- database support
 }

@@ -255,3 +255,7 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 - virtual env for debugpy at ~/.virtualenvs/debugpy for python debug. then put json debug files needed in project folders
 - for jupyter notebook support, ipython needs to be installed in the project (or system wide). specified in iron plugin.
 - npm and node installed for prettier
+- for quickshell, make sure to include init file in project directory, see quickshell docs: https://quickshell.org/docs/v0.2.1/guide/install-setup/#language-server
+- for database connection, environment or global variables need to be set to specify db connection
+  - export DBUI_URL="postgres://username:password@localhost:5432/database_name" or
+  - create a .env file in project root DB_UI_DEV=postgres://user:pass@localhost:5432/dev_db and install tpop/vim-dotenv in dependencies for dadbod in it's config
