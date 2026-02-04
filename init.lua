@@ -883,7 +883,7 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev', 'dadbod' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'dadbod', 'buffer' },
         providers = {
           dadbod = {
             name = 'Dadbod',
