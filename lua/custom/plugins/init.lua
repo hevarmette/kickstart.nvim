@@ -11,4 +11,5 @@ return {
   require 'kickstart.plugins.neo-tree',
   require 'custom.plugins.iron', -- run lines with a terminal on right side
   require 'custom.plugins.dadbod', -- database support
+  require 'custom.plugins.doge', -- documentation generator
 }
