@@ -1,8 +1,7 @@
 return {
   {
     'hat0uma/csvview.nvim',
-    ---@module "csvview"
-    ---@type CsvView.Options
+    ft = 'csv',
     opts = {
       parser = { comments = { '#', '//' } },
       keymaps = {
@@ -19,6 +18,17 @@ return {
         jump_prev_row = { '<S-Enter>', mode = { 'n', 'v' } },
       },
     },
+    config = function(_, opts)
+      require('csvview').setup(opts)
+
+      -- Auto-enable csvview for csv files
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'csv',
+        callback = function()
+          require('csvview').enable()
+        end,
+      })
+    end,
     cmd = { 'CsvViewEnable', 'CsvViewDisable', 'CsvViewToggle' },
   },
 }
