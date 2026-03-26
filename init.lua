@@ -727,12 +727,12 @@ require('lazy').setup({
       -- We must then iterate through that list and replace the names with the correct Mason
       -- package name.
       local ensure_installed = vim.tbl_keys(servers or {})
-      for i, pkg in ipairs(ensure_installed) do
-        if pkg == 'jedi_ls' then
-          -- The lspconfig name `jedi_ls` needs to be replaced with the Mason package name `jedi-language-server`.
-          ensure_installed[i] = 'jedi-language-server'
-        end
-      end
+      -- for i, pkg in ipairs(ensure_installed) do
+      -- if pkg == 'jedi_ls' then
+      -- The lspconfig name `jedi_ls` needs to be replaced with the Mason package name `jedi-language-server`.
+      -- ensure_installed[i] = 'jedi-language-server'
+      -- end
+      -- end
 
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
