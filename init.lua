@@ -736,7 +736,7 @@ require('lazy').setup({
 
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'black', -- Used to format Python code
+        'ruff', -- Used to format Python code
         'prettier', -- Used to format markdown text among others languages I don't use rn
         'markdownlint-cli2', -- Used for linting markdown
       })
@@ -795,7 +795,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'black' },
+        python = { 'ruff' },
         markdown = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
