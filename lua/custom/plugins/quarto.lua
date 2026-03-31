@@ -47,5 +47,12 @@ return {
     vim.keymap.set('n', '<localleader>MA', function()
       runner.run_all(true)
     end, { desc = 'run all cells of all languages', silent = true })
+
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = { 'markdown', 'quarto' },
+      callback = function()
+        require('quarto').activate()
+      end,
+    })
   end,
 }

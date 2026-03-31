@@ -14,8 +14,8 @@ return {
   require 'custom.plugins.doge', -- documentation generator
   require 'custom.plugins.csvview', -- csv highlighting and formatting
   -- require 'custom.plugins.image', -- image processor
-  -- require 'custom.plugins.wezterm', -- Utilities for interacting with the wezterm cli through Lua/neovim
-  -- require 'custom.plugins.molten', -- run code in jupyter kernel
-  -- require 'custom.plugins.jupytext', -- jupyter notebook support
-  -- require 'custom.plugins.quarto', -- jupyter notebook lsp
+  require 'custom.plugins.wezterm', -- Utilities for interacting with the wezterm cli through Lua/neovim
+  require 'custom.plugins.molten', -- run code in jupyter kernel
+  require 'custom.plugins.jupytext', -- jupyter notebook support
+  require 'custom.plugins.quarto', -- jupyter notebook lsp
 }
