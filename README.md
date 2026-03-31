@@ -254,8 +254,21 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 - must have nerd font set for terminal
 - virtual env for debugpy at ~/.virtualenvs/debugpy for python debug. then put json debug files needed in project folders
 - for jupyter notebook support, ipython needs to be installed in the project (or system wide). specified in iron plugin.
-- npm and node installed for prettier
+- npm and node installed for prettier and pyright
 - for quickshell, make sure to include init file in project directory, see quickshell docs: https://quickshell.org/docs/v0.2.1/guide/install-setup/#language-server
 - for database connection, environment or global variables need to be set to specify db connection
   - export DBUI_URL="postgres://username:password@localhost:5432/database_name" or
   - create a .env file in project root DB_UI_DEV=postgres://user:pass@localhost:5432/dev_db and install tpop/vim-dotenv in dependencies for dadbod in it's config
+- for full jupyter notebook support using molten,
+  - make sure to use kitty or terminal that supports kitty graphics protocol. So really just kitty or wezterm.
+  - Molten requires a dedicated, headless Python host environment to communicate with Neovim. This configuration expects this environment to live at ~/.virtualenvs/debugpy.
+    Create the environment and install the required Neovim communication packages:
+    Bash
+    # Create the virtual environment
+    python3 -m venv ~/.virtualenvs/debugpy
+    # Install Neovim Python host dependencies
+    ~/.virtualenvs/debugpy/bin/python3 -m pip install pynvim jupyter_client debugpy
+  - jupytext in project environment
+  - ipykernel in project environment
+    - ensure to have a named kernel and register the kernel using the exact path for python environment if it does not work after naming the kernel
+      /absolute/path/to/your/venv/bin/python -m ipykernel install --user --name=my_project_name --display-name "Python (My Project)"
