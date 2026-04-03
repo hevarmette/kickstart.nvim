@@ -18,4 +18,5 @@ return {
   require 'custom.plugins.molten', -- run code in jupyter kernel
   require 'custom.plugins.jupytext', -- jupyter notebook support
   require 'custom.plugins.quarto', -- jupyter notebook lsp
+  require 'custom.plugins.render-markdown', -- view formatted markdown files
 }
