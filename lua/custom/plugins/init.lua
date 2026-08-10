@@ -2,6 +2,9 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+---@module 'lazy'
+---@type LazySpec
 return {
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
