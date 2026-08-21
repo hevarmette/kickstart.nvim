@@ -413,12 +413,17 @@ require('lazy').setup({
         end,
       })
 
-      vim.keymap.set('n', '<leader>/', function()
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      vim.keymap.set(
+        'n',
+        '<leader>/',
+        function()
+          builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+            winblend = 10,
+            previewer = false,
+          })
+        end,
+        { desc = '[/] Fuzzily search in current buffer' }
+      )
 
       vim.keymap.set(
         'n',
@@ -540,6 +545,7 @@ require('lazy').setup({
         -- gopls = {},
         -- rust_analyzer = {},
         basedpyright = {},
+        vtsls = {},
 
         stylua = {}, -- Used to format Lua code
 
@@ -625,6 +631,10 @@ require('lazy').setup({
         local enabled_filetypes = {
           lua = true,
           python = true,
+          typescript = true,
+          javascript = true,
+          typescriptreact = true,
+          javascriptreact = true,
         }
         if enabled_filetypes[vim.bo[bufnr].filetype] then
           return { timeout_ms = 500, lsp_format = 'fallback' }
@@ -636,11 +646,15 @@ require('lazy').setup({
         lsp_format = 'fallback',
       },
       formatters_by_ft = {
+        -- You can use 'stop_after_first' to run the first available formatter from the list
+        -- javascript = { "prettierd", "prettier", stop_after_first = true },
         lua = { 'stylua' },
         python = { 'ruff' },
         markdown = { 'prettier' },
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { 'prettier' },
+        javascript = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        javascriptreact = { 'prettier' },
       },
     },
   },
