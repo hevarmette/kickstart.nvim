@@ -545,6 +545,13 @@ require('lazy').setup({
         -- gopls = {},
         -- rust_analyzer = {},
         basedpyright = {},
+        ruff = {
+          init_options = {
+            settings = {
+              lint = { enable = false },
+            },
+          },
+        },
         vtsls = {},
 
         stylua = {}, -- Used to format Lua code
