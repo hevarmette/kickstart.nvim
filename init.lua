@@ -744,17 +744,11 @@ require('lazy').setup({
   },
 
   {
+    -- Kept installed as the fallback theme. The active colorscheme is chosen
+    -- in lua/custom/plugins/theme.lua (matugen palette, else tokyonight-night).
     'folke/tokyonight.nvim',
-    priority = 1000,
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
-        styles = {
-          comments = { italic = false },
-        },
-      }
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
+    lazy = false,
+    -- no priority / no config here: theme.lua owns applying the colorscheme.
   },
 
   -- Highlight todo, notes, etc in comments

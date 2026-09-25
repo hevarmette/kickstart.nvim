@@ -12,3 +12,6 @@ spell/
 lazy-lock.json
 
 .DS_Store
+
+# Per-machine matugen output (generated from each host's wallpaper).
+lua/custom/generated_colors.lua
