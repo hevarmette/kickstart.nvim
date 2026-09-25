@@ -5,7 +5,7 @@
 return {
   'Maxteabag/sqlit.nvim',
   opts = {
-    theme = 'textual-ansi', -- inherit terminal colors
+    theme = 'tokyo-night', -- sqlit's built-in Tokyo Night theme (matches nvim tokyonight)
     keymap = '<leader>D',
     desc = 'Database (sqlit)',
   },
