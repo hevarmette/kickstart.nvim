@@ -667,7 +667,6 @@ require('lazy').setup({
         typescriptreact = { 'prettier' },
         javascriptreact = { 'prettier' },
         sql = { 'sqlfluff' },
-        mysql = { 'sqlfluff' },
         plsql = { 'sqlfluff' },
       },
       formatters = {
