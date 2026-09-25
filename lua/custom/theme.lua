@@ -3,6 +3,9 @@
 -- Default: a premade theme (see DEFAULT_COLORSCHEME below), applied on startup.
 -- Optional: a matugen-generated palette (wallpaper -> base16) applied on demand.
 --
+-- This is a plain module (not a lazy plugin spec). Its setup() is called from
+-- the single mini.nvim spec in init.lua, so mini.nvim is declared exactly once.
+--
 -- Commands:
 --   :MatugenReload   apply the matugen-generated palette (lua/custom/generated_colors.lua)
 --   :ThemeDefault    switch back to the premade default theme
@@ -73,29 +76,28 @@ local function apply_matugen()
   return true
 end
 
-return {
-  {
-    'echasnovski/mini.nvim',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      -- Premade theme is the default on startup.
-      apply_default()
+local M = {}
 
-      -- Opt in to the matugen-generated palette.
-      vim.api.nvim_create_user_command('MatugenReload', function()
-        if apply_matugen() then
-          vim.notify('matugen palette applied', vim.log.levels.INFO)
-        else
-          vim.notify('no valid matugen palette found (run matugen first)', vim.log.levels.WARN)
-        end
-      end, { desc = 'Apply the matugen-generated colorscheme' })
+-- Apply the startup theme and register the :MatugenReload / :ThemeDefault
+-- commands. Call this once, from the mini.nvim spec's config in init.lua.
+function M.setup()
+  -- Premade theme is the default on startup.
+  apply_default()
 
-      -- Return to the premade default theme.
-      vim.api.nvim_create_user_command('ThemeDefault', function()
-        apply_default()
-        vim.notify('default theme applied (' .. DEFAULT_COLORSCHEME .. ')', vim.log.levels.INFO)
-      end, { desc = 'Switch back to the premade default colorscheme' })
-    end,
-  },
-}
+  -- Opt in to the matugen-generated palette.
+  vim.api.nvim_create_user_command('MatugenReload', function()
+    if apply_matugen() then
+      vim.notify('matugen palette applied', vim.log.levels.INFO)
+    else
+      vim.notify('no valid matugen palette found (run matugen first)', vim.log.levels.WARN)
+    end
+  end, { desc = 'Apply the matugen-generated colorscheme' })
+
+  -- Return to the premade default theme.
+  vim.api.nvim_create_user_command('ThemeDefault', function()
+    apply_default()
+    vim.notify('default theme applied (' .. DEFAULT_COLORSCHEME .. ')', vim.log.levels.INFO)
+  end, { desc = 'Switch back to the premade default colorscheme' })
+end
+
+return M

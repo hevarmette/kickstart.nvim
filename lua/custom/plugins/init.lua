@@ -6,7 +6,9 @@
 ---@module 'lazy'
 ---@type LazySpec
 return {
-  require 'custom.plugins.theme', -- matugen-driven dynamic colorscheme (mini.base16) w/ tokyonight fallback
+  -- Colorscheme lives in lua/custom/theme.lua (a plain module, not a plugin
+  -- spec). Its setup() is invoked from the mini.nvim config in init.lua so
+  -- mini.nvim is declared exactly once.
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.debug',

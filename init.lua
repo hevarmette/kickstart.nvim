@@ -745,10 +745,10 @@ require('lazy').setup({
 
   {
     -- Kept installed as the fallback theme. The active colorscheme is chosen
-    -- in lua/custom/plugins/theme.lua (matugen palette, else tokyonight-night).
+    -- in lua/custom/theme.lua (matugen palette, else tokyonight-moon).
     'folke/tokyonight.nvim',
     lazy = false,
-    -- no priority / no config here: theme.lua owns applying the colorscheme.
+    -- no priority / no config here: custom/theme.lua owns applying the colorscheme.
   },
 
   -- Highlight todo, notes, etc in comments
@@ -765,6 +765,8 @@ require('lazy').setup({
   -- Collection of various small independent plugins/modules
   {
     'nvim-mini/mini.nvim',
+    lazy = false,
+    priority = 1000, -- load early so the colorscheme applies before UI draws
     config = function()
       require('mini.ai').setup {
         mappings = {
@@ -781,6 +783,10 @@ require('lazy').setup({
 
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function() return '%2l:%-2v' end
+
+      -- Colorscheme (tokyonight default + matugen/mini.base16 on demand).
+      -- Lives in lua/custom/theme.lua; mini.base16 ships with mini.nvim.
+      require('custom.theme').setup()
     end,
   },
 
