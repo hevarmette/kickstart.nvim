@@ -593,6 +593,7 @@ require('lazy').setup({
         'ruff', -- Used to format Python code
         'prettier', -- Used to format markdown text among others
         'markdownlint-cli2', -- Used for linting markdown
+        'sqlfluff', -- Used to format/lint SQL (Snowflake dialect)
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -642,9 +643,12 @@ require('lazy').setup({
           javascript = true,
           typescriptreact = true,
           javascriptreact = true,
+          sql = true,
         }
         if enabled_filetypes[vim.bo[bufnr].filetype] then
-          return { timeout_ms = 500, lsp_format = 'fallback' }
+          -- SQL (sqlfluff) has slow Python cold-start; give it more time.
+          local timeout = vim.bo[bufnr].filetype == 'sql' and 3000 or 500
+          return { timeout_ms = timeout, lsp_format = 'fallback' }
         else
           return nil
         end
@@ -662,6 +666,18 @@ require('lazy').setup({
         javascript = { 'prettier' },
         typescriptreact = { 'prettier' },
         javascriptreact = { 'prettier' },
+        sql = { 'sqlfluff' },
+        mysql = { 'sqlfluff' },
+        plsql = { 'sqlfluff' },
+      },
+      formatters = {
+        -- Format SQL with sqlfluff using the Snowflake dialect.
+        -- require_cwd=false lets it run on standalone .sql files anywhere
+        -- (not just inside a project with a .sqlfluff/pyproject config).
+        sqlfluff = {
+          args = { 'format', '--dialect=snowflake', '-' },
+          require_cwd = false,
+        },
       },
     },
   },

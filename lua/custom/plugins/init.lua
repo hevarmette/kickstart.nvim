@@ -14,6 +14,7 @@ return {
   require 'kickstart.plugins.neo-tree',
   require 'custom.plugins.iron', -- run lines with a terminal on right side
   require 'custom.plugins.dadbod', -- database support
+  require 'custom.plugins.sqlit', -- sqlit SQL TUI (Snowflake-capable) in a terminal
   require 'custom.plugins.doge', -- documentation generator
   require 'custom.plugins.csvview', -- csv highlighting and formatting
   -- require 'custom.plugins.image', -- image processor
