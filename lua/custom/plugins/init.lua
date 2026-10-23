@@ -26,4 +26,5 @@ return {
   require 'custom.plugins.jupytext', -- jupyter notebook support
   require 'custom.plugins.quarto', -- jupyter notebook lsp
   require 'custom.plugins.render-markdown', -- view formatted markdown files
+  require 'custom.plugins.outline', -- code outline
 }

@@ -28,7 +28,7 @@ return {
     vim.keymap.set('n', '<localleader>mc', ':MoltenReevaluateCell<CR>', { desc = 'Evaluate [R]un [C]ell', silent = true })
     vim.keymap.set('v', '<localleader>m', ':<C-u>MoltenEvaluateVisual<CR>gv', { desc = 'Evaluate [R]un Visual', silent = true })
     vim.keymap.set('n', '<localleader>md', ':MoltenDelete<CR>', { desc = '[R]un [D]elete Cell', silent = true })
-    vim.keymap.set('n', '<localleader>os', ':MoltenShowOutput<CR>', { desc = '[O]utput [S]how', silent = true })
-    vim.keymap.set('n', '<localleader>oh', ':MoltenHideOutput<CR>', { desc = '[O]utput [H]ide', silent = true })
+    vim.keymap.set('n', '<localleader>Os', ':MoltenShowOutput<CR>', { desc = '[O]utput [S]how', silent = true })
+    vim.keymap.set('n', '<localleader>Oh', ':MoltenHideOutput<CR>', { desc = '[O]utput [H]ide', silent = true })
   end,
 }
