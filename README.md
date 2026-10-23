@@ -327,7 +327,8 @@ asdf reshim neovim
 - must have nerd font set for terminal
 - virtual env for debugpy at ~/.virtualenvs/debugpy for python debug. then put json debug files needed in project folders
 - for jupyter notebook support, ipython needs to be installed in the project (or system wide). specified in iron plugin.
-- npm and node installed for prettier and pyright
+- npm and node installed for prettier and basedpyright
+- tree-sitter CLI installed for building treesitter parsers (the nvim-treesitter `main` branch compiles parsers with it; `:TSUpdate`/install fail without it). Install globally via npm: `npm install -g tree-sitter-cli`. Make sure its bin dir is on PATH when launching nvim.
 - for quickshell, make sure to include init file in project directory, see quickshell docs: https://quickshell.org/docs/v0.2.1/guide/install-setup/#language-server
 - for database connection, environment or global variables need to be set to specify db connection
   - export DBUI_URL="postgres://username:password@localhost:5432/database_name" or

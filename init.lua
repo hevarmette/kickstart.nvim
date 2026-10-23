@@ -93,6 +93,13 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Treat ArcGIS Python Toolbox files (.pyt) as Python so LSP/linting attach.
+vim.filetype.add {
+  extension = {
+    pyt = 'python',
+  },
+}
+
 -- [[ Setting options ]]
 --  See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -603,7 +610,12 @@ require('lazy').setup({
         automatic_installation = false,
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
+            -- Only enable servers explicitly declared in the `servers` table above.
+            -- This prevents stray Mason-installed servers (e.g. a leftover
+            -- `pyright` alongside `basedpyright`) from auto-attaching and
+            -- producing duplicate references/definitions.
+            if servers[server_name] == nil then return end
+            local server = servers[server_name]
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             vim.lsp.config(server_name, server)
             vim.lsp.enable(server_name)
